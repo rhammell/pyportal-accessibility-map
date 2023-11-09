@@ -492,7 +492,6 @@ while True:
                     map_group.hidden = True
                     place_group.hidden = False
                     current_view = 1
-                    break
                 else:
                     map_group.hidden = False
                     place_group.hidden = True
