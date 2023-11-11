@@ -393,7 +393,7 @@ map_group.append(map_sprite)
 
 # Display center circle
 cx, cy = calc_pixel_coordinate(center_lat, center_lon, display.width, display.height, lat_min, lat_max, lon_min, lon_max)
-center_circle = Circle(cx, cy, 5, fill=0xFDDA0D, outline=0x4b4b4b)
+center_circle = Circle(cx, cy, 5, fill=0xf8fc78, outline=0x505450)
 map_group.append(center_circle)
 
 # Load map icon
