@@ -333,6 +333,7 @@ wifi = adafruit_esp32spi_wifimanager.ESPSPI_WiFiManager(esp, secrets, status_lig
 
 # Connect WiFi
 splash_label.text = "Connecting to WiFi..."
+print("Connecting to WiFi...")
 wifi.connect()
 
 # Define map center
@@ -421,10 +422,10 @@ body = {
 
 # Make Google Places request
 splash_label.text = "Requesting map data..."
-splash_label.text = ""
+print("Requesting map data...")
 response = wifi.post(places_url, headers=headers, data=json.dumps(body))
 data = response.json()
-#print(data)
+splash_label.text = ""
 
 # Loop through resulting places
 if "places" in data:
