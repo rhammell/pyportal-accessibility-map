@@ -11,6 +11,7 @@ import adafruit_touchscreen
 import adafruit_imageload
 from adafruit_bitmap_font import bitmap_font
 from adafruit_display_shapes.rect import Rect
+from adafruit_display_shapes.circle import Circle
 from adafruit_display_text import label, wrap_text_to_pixels
 from adafruit_esp32spi import adafruit_esp32spi
 from adafruit_esp32spi import adafruit_esp32spi_wifimanager
@@ -337,7 +338,7 @@ print("Connecting to WiFi...")
 wifi.connect()
 
 # Define map center
-center_lat = 38.0305
+center_lat = 38.0306
 center_lon = -78.4807
 
 # Map radius (km)
@@ -389,6 +390,11 @@ download_file(convert_url, map_fname)
 map_image = displayio.OnDiskBitmap(map_fname)
 map_sprite = displayio.TileGrid(map_image, pixel_shader=map_image.pixel_shader)
 map_group.append(map_sprite)
+
+# Display center circle
+cx, cy = calc_pixel_coordinate(center_lat, center_lon, display.width, display.height, lat_min, lat_max, lon_min, lon_max)
+center_circle = Circle(cx, cy, 5, fill=0xFDDA0D, outline=0x4b4b4b)
+map_group.append(center_circle)
 
 # Load map icon
 icon_image = displayio.OnDiskBitmap('img/map_icon.bmp')
